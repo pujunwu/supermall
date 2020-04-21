@@ -1,0 +1,77 @@
+@import './normalizze.css';
+/* root根元素，css里面可以定义变量，这个就是定义的变量 */
+
+:root {
+  --color-text: #666;
+  --color-high-text: #ff5777;
+  --color-tint: #ff8198;
+  --color-background: #fff;
+  --line-height: 1.5;
+}
+
+/* 
+伪元素
+优点
+减少dom节点数
+让css帮助解决部分js问题，让问题变得简单
+
+缺点
+不利于SEO
+无法审查元素，不利于调试 
+
+after//后伪元素，在标签后加内容
+before //前伪元素，在标签前加内容
+*/
+
+/* 伪元素允许创作人员在元素内容的最后面插入生成内容。默认地，
+这个伪元素是行内元素，不过可以使用属性 display 改变这一点 */
+
+/* 定义所有标签的基本样式 */
+
+*, *::before, *::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  /* 设置字体 */
+  font-family: "Helvetica Neue", sans-serif, "MicrosoftYaHei", "微软雅黑", Arial, Helvetica;
+  /* 禁止用户选择页面上的文字图片等 */
+  user-select: none;
+  /* webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色 */
+  -webkit-tap-highlight-color: transparent;
+  /* 使用变量 */
+  background-color: var(--color-background);
+  /* vw:1vw等于视口宽度的1%，vh：1vh等于视口高度的1% */
+  /* vmin：选取vw和vh中最小的那个，vmax：选取vw和vh中最大的那个 */
+  width: 100vw;
+}
+
+a {
+  /* a标签的字体颜色 */
+  color: var(--color-text);
+  /* 下划线：underline，删除线：line-through 上划：overline线属性样式，啥都没有（a标签可点击样式也没有）：blink */
+  text-decoration: none;
+}
+
+.clear-fixa::after {
+  clear: both;
+  content: '';
+  display: block;
+  width: 0px;
+  height: 0;
+  visibility: hidden;
+}
+
+.clear-fixa {
+  zoom: 1;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
